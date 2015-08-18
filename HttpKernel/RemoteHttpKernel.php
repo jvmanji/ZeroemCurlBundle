@@ -163,7 +163,7 @@ class RemoteHttpKernel implements HttpKernelInterface
         if (!empty($content)) {
             $postfields = $content;
         } else if (count($request->request->all()) > 0) {
-            $postfields = $request->request->all();
+            $postfields = http_build_query($request->request->all());
         }
 
         $curl->setOption(CURLOPT_POSTFIELDS, $postfields);
